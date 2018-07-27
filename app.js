@@ -86,12 +86,12 @@ bot.dialog('/', function (session) {
             session.send(
                 {
                     "type": "message",
-                    "text": "Sample with a thumbnail card",
                     "attachments": [{
                         "contentType": "application/vnd.microsoft.card.thumbnail",
                         "content": {
                             "title": "Commands:",
                             "subtitle": "",
+                            "text": "emoji [emoji_name]: returns matching emojis\n\nset-reminder [remind me of...]: sets a reminder for you\n\nget-reminder: returns your reminder you set",
                         }
                     }]
                 }
