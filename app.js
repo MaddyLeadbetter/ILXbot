@@ -42,7 +42,7 @@ bot.set('storage', tableStorage);
 bot.dialog('/', function (session) {
     const botName = 'ilxbot2';
     const cleanedMessage = session.message.text.replace(botName, '').trim();
-    const args = cleanedMessage.split(' \"');
+    const args = cleanedMessage.split(' ');
     const setStringWords = new Set(args)
     const returnMsg = '';
     const arrayEmoji=[]
@@ -69,9 +69,6 @@ bot.dialog('/', function (session) {
                 });
             }
             session.send(message);
-        }
-        else if (args[1] == 'args-are') {
-            session.send(`Args are: ${args[2]}`);
         }
         else if (args[1] === 'show-data') {
             session.send(JSON.stringify(session.userData, null, 2));
