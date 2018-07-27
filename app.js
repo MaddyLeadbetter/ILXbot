@@ -5,6 +5,8 @@ A simple echo bot for the Microsoft Bot Framework.
 var restify = require('restify');
 var builder = require('botbuilder');
 var botbuilder_azure = require("botbuilder-azure");
+var emoji = require('node-emoji');
+
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -39,19 +41,22 @@ bot.set('storage', tableStorage);
 bot.dialog('/', function (session) {
     const botName = 'ilxbot2';
     const cleanedMessage = session.message.text.replace(botName, '').trim();
-    const args = cleanedMessage.trim().split(' ');
-
-    // For some reason, array element 0 is an empty string...
-    if (args[1].includes('ping')) {
+    const args = cleanedMessage.split(' ');
+    const returnMsg = '';
+    const arrayEmoji=[]
+    if (args[0].includes('ping')) {
         session.send('pong!');
     }
-    else if (args[1].includes('emoji')) {
-        var emoji = require('node-emoji');
-        const emojiResults = emoji.search(args[1]);
-        const returnMsg = '';
-        emojiResults.forEach(currentEmoji => {
-            returnMsg += currentEmoji.emoji;
+    else if (args[0].includes('emoji')) {
+        
+        args.forEach(element => {
+           if (element !== 'emoji'){
+            arrayEmoji.push(emoji.search(element))
+           }
         });
+
+        arrayEmoji.forEach(x=>returnMsg += ' ' + x.emoji);
+
         session.send(returnMsg);
     }
     else if (args[1].includes('debug session')) {
