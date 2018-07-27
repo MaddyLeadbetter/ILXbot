@@ -45,7 +45,7 @@ bot.dialog('/', function (session) {
     const args = cleanedMessage.split(' ');
     const returnMsg = '';
     const arrayEmoji=[]
-    var hasEmoji= args.includes(emoji)
+    var hasEmoji= args.includes('emoji')
     let indexEmoji;
     if (hasEmoji){
         indexEmoji = args.indexOf('emoji')
