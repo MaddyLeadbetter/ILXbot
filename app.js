@@ -70,7 +70,7 @@ bot.dialog('/', function (session) {
             }
             session.send(message);
         }
-        else if (args[1] === 'show-data') {
+        else if (args[1] === 'get-reminder') {
             session.send(JSON.stringify(session.userData, null, 2));
         }
         else if (args[1] === 'set-reminder') {
@@ -81,6 +81,9 @@ bot.dialog('/', function (session) {
             remember = remember.trim();
             session.userData.reminder = remember;
             session.send(`Set your reminder to ${remember}`);
+        }
+        else if (args[1] === 'help') {
+            session.send(`Commands:\nemoji [emoji_name]: returns matching emojis\nset-reminder [remind me of...]: sets a reminder for you\nget-reminder: returns your reminder you set\n`)
         }
         else {
             const messageData = JSON.stringify(args);
