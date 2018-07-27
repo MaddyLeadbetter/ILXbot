@@ -73,11 +73,8 @@ bot.dialog('/', function (session) {
             }
             session.send(message);
         }
-        else if (args[1].includes('debug session')) {
-            session.send(JSON.stringify(session, null, 2));
-        }
-        else if (args[1].includes('debug message')) {
-            session.send(JSON.stringify(session.message, null, 2));
+        else if (args[1].includes('show-data')) {
+            session.send(JSON.stringify(session.userData, null, 2));
         }
         else {
             const messageData = JSON.stringify(args);
