@@ -61,6 +61,6 @@ bot.dialog('/', function (session) {
     }
     else {
         const messageData = JSON.stringify(args);
-        session.send(`I don\'t understand! Message: ${messageData}`);
+        session.send(`I don\'t understand! Message: "${cleanedMessage}", Split message: ${messageData}`);
     }
 });
