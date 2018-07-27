@@ -72,7 +72,7 @@ bot.dialog('/', function (session) {
         }
         else if (args[1] === 'get-reminder') {
             const userReminder = session.userData.reminder;
-            session.send(userReminder ? userReminder : 'You haven\'t set a reminder for yourself. Do that with \"set-reminder\");
+            session.send(userReminder ? userReminder : 'You haven\'t set a reminder for yourself. Do that with \"set-reminder\"');
         }
         else if (args[1] === 'set-reminder') {
             let remember = '';
@@ -88,10 +88,14 @@ bot.dialog('/', function (session) {
                 {
                     "type": "message",
                     "attachments": [{
-                        "contentType": "application/vnd.microsoft.card.thumbnail",
+                        "contentType": "application/vnd.microsoft.card.receipt",
                         "content": {
                             "title": "Commands:",
-                            "subtitle": "emoji [emoji_name]: returns matching emojis  set-reminder [remind me of...]: sets a reminder for you  get-reminder: returns your reminder you set",
+                            "items": [
+                                { "subtitle": "emoji [emoji_name]: returns matching emojis"},
+                                { "subtitle": "set-reminder [remind me of...]: sets a reminder for you"},
+                                { "subtitle": "get-reminder: returns your reminder you set"},
+                            ]
                         }
                     }]
                 }
