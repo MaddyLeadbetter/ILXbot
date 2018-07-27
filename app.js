@@ -39,19 +39,24 @@ bot.set('storage', tableStorage);
 bot.dialog('/', function (session) {
     const botName = 'ilxbot2';
     const cleanedMessage = session.message.text.replace(botName, '').trim();
+    const args = cleanedMessage.split(' ')
 
-    if (cleanedMessage.includes('ping')) {
+    if (args[0].includes('ping')) {
         session.send('pong!');
     }
-    else if (cleanedMessage.includes('emoji')) {
+    else if (args[0].includes('emoji')) {
         var emoji = require('node-emoji');
-        const emojiResults = emoji.search('pizz');
-        session.send(emojiResults[0].emoji);
+        const emojiResults = emoji.search(args[1]);
+        const returnMsg = '';
+        emojiResults.forEach(currentEmoji => {
+            returnMsg += currentEmoji.emoji;
+        });
+        session.send(returnMsg);
     }
-    else if (cleanedMessage.includes('debug session')) {
+    else if (args[0].includes('debug session')) {
         session.send(JSON.stringify(session, null, 2));
     }
-    else if (cleanedMessage.includes('debug message')) {
+    else if (args[0].includes('debug message')) {
         session.send(JSON.stringify(session.message, null, 2));
     }
     else {
