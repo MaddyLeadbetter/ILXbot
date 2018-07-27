@@ -64,10 +64,14 @@ bot.dialog('/', function (session) {
         let message = ''
         const elementAfterEmoji = args[parseInt(indexEmoji)+1]
         const emojiElement = emoji.search(elementAfterEmoji)
-        emojiElement.forEach(element => {
-            message += element.emoji
-        });
-        // session.send(emojiElement);
+        if (emojiElement.length == 0) {
+            message = "Sorry, we don't have that emoji! " + emoji.get('sad');
+        }
+        else {
+            emojiElement.forEach(element => {
+                message += element.emoji
+            });
+        }
         session.send(message);
     }
     else if (args[1].includes('debug session')) {
