@@ -37,7 +37,7 @@ var bot = new builder.UniversalBot(connector);
 bot.set('storage', tableStorage);
 
 bot.dialog('/', function (session) {
-    if (session.message.text === 'ping') {
+    if (session.message.text.includes('ping')) {
         session.send('pong!');
     }
     else {
