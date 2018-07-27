@@ -44,18 +44,15 @@ bot.dialog('/', function (session) {
     const args = cleanedMessage.split(' ');
     const returnMsg = '';
     const arrayEmoji=[]
+
+    // Array element 0 is just an empty thing. So we're starting at element 1
     if (args[1].includes('ping')) {
         session.send('pong!');
     }
     else if (args[1].includes('emoji')) {
-        
-        args.forEach(element => {
-           if (element !== 'emoji'){
-            arrayEmoji.push(emoji.search(element))
-           }
-        });
-        arrayEmoji.forEach(x => {
-            returnMsg += ' ' + x.emoji
+        const emojiResults = emoji.search(args[2]);
+        emojiResults.forEach(x => {
+            returnMsg += x.emoji;
         });
         session.send(returnMsg);
     }
