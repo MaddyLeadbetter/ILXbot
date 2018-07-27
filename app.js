@@ -55,7 +55,7 @@ bot.dialog('/', function (session) {
     }
     else if (hasEmoji) {
         // var emoji = require('node-emoji');
-        // let indexEmoji = args.indexOf('emoji')
+        let indexEmoji = args.indexOf('emoji')
         // for (let index = indexEmoji+1; index < args.length; index++){
         //     elementArray.push(args[index]);
         // }
