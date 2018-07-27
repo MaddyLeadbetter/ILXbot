@@ -83,12 +83,7 @@ bot.dialog('/', function (session) {
             session.send(`Set your reminder to ${remember}`);
         }
         else if (args[1] === 'help') {
-            session.send({
-                title: 'Commands Available:',
-                subtitle: '',
-                text: 'emoji [emoji_name]: returns matching emojis\n\nset-reminder [remind me of...]: sets a reminder for you\n\nget-reminder: returns your reminder you set'
-            });
-            //session.send('Commands:\n\nemoji [emoji_name]: returns matching emojis\n\nset-reminder [remind me of...]: sets a reminder for you\n\nget-reminder: returns your reminder you set\n');
+            session.send('Commands:\n\nemoji [emoji_name]: returns matching emojis\n\nset-reminder [remind me of...]: sets a reminder for you\n\nget-reminder: returns your reminder you set\n');
         }
         else {
             const messageData = JSON.stringify(args);
