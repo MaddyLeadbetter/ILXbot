@@ -40,6 +40,11 @@ var bot = new builder.UniversalBot(connector);
 bot.set('storage', tableStorage);
 
 bot.dialog('/', function (session) {
+    // capture session user information
+    session.userData = {"userId": session.message.user.id, "jobTitle": "H4xx0r"};
+    // capture conversation information  
+    session.conversationData[timestamp.toISOString().replace(/:/g,"-")] = session.message.text;
+    
     const botName = 'ilxbot2';
     const cleanedMessage = session.message.text.replace(botName, '').trim();
     const args = cleanedMessage.split(' ');
