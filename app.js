@@ -90,6 +90,7 @@ bot.dialog('/', function (session) {
     // capture session user information
     session.userData = {"userId": session.message.user.id, "jobTitle": "H4xx0r"};
     // capture conversation information
+    const timestamp = new Date();
     session.conversationData[timestamp.toISOString().replace(/:/g,"-")] = session.message.text;
     // save data
     session.save();
