@@ -10,6 +10,7 @@ var emoji = require('node-emoji');
 
 // Setup Restify Server
 var server = restify.createServer();
+console.log(server)
 server.listen(process.env.port || process.env.PORT || 3978, function () {
    console.log('%s listening to %s', server.name, server.url); 
 });
@@ -44,20 +45,22 @@ bot.dialog('/', function (session) {
     const args = cleanedMessage.split(' ');
     const returnMsg = '';
     const arrayEmoji=[]
-    if (args[1].includes('ping')) {
+    var hasEmoji= args.includes(emoji)
+    let indexEmoji;
+    if (hasEmoji){
+        indexEmoji = args.indexOf('emoji')
+    }
+    if (args.indexOf('ping')) {
         session.send('pong!');
     }
-    else if (args[1].includes('emoji')) {
-        
-        args.forEach(element => {
-           if (element !== 'emoji'){
-            arrayEmoji.push(emoji.search(element))
-           }
-        });
-        arrayEmoji.forEach(x => {
-            returnMsg += ' ' + x.emoji
-        });
-        session.send(returnMsg);
+    else if (hasEmoji) {
+        const elementArray = []
+        // for (let index = indexEmoji+1; index < args.length; index++){
+        //     elementArray.push(args[index]);
+        // }
+        const elementAfterEmoji = args[indexEmoji+1]
+        const emojiElement = emoji.search(elementAfterEmoji)
+        session.send(emojiElement);
     }
     else if (args[1].includes('debug session')) {
         session.send(JSON.stringify(session, null, 2));
