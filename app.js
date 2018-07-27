@@ -64,7 +64,7 @@ bot.dialog('/', function (session) {
             const elementAfterEmoji = args[parseInt(indexEmoji)+1]
             const emojiElement = emoji.search(elementAfterEmoji)
             if (emojiElement.length == 0) {
-                message = emoji.emojify('Sorry, we don\'t have that emoji! :sad:');
+                message = emoji.emojify('Sorry, we don\'t have that emoji! :disappointed_relieved:');
             }
             else {
                 emojiElement.forEach(element => {
@@ -91,4 +91,5 @@ bot.dialog('/', function (session) {
     session.conversationData[timestamp.toISOString().replace(/:/g,"-")] = session.message.text;
     // save data
     session.save();
+    bot.set('storage', tableStorage);
 });
