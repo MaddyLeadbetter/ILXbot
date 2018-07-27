@@ -90,8 +90,7 @@ bot.dialog('/', function (session) {
                         "contentType": "application/vnd.microsoft.card.thumbnail",
                         "content": {
                             "title": "Commands:",
-                            "subtitle": "",
-                            "text": "emoji [emoji_name]: returns matching emojis\n\nset-reminder [remind me of...]: sets a reminder for you\n\nget-reminder: returns your reminder you set",
+                            "subtitle": "emoji [emoji_name]: returns matching emojis  set-reminder [remind me of...]: sets a reminder for you  get-reminder: returns your reminder you set",
                         }
                     }]
                 }
