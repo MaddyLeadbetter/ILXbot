@@ -88,7 +88,7 @@ bot.dialog('/', function (session) {
                 .subtitle('Commands Available:')
                 .text('emoji [emoji_name]: returns matching emojis\n\nset-reminder [remind me of...]: sets a reminder for you\n\nget-reminder: returns your reminder you set');
             //session.send('Commands:\n\nemoji [emoji_name]: returns matching emojis\n\nset-reminder [remind me of...]: sets a reminder for you\n\nget-reminder: returns your reminder you set\n');
-            session.send(card);
+            session.send(card.toAttachment());
         }
         else {
             const messageData = JSON.stringify(args);
