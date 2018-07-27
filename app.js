@@ -37,13 +37,21 @@ var bot = new builder.UniversalBot(connector);
 bot.set('storage', tableStorage);
 
 bot.dialog('/', function (session) {
-    if (session.message.text.includes('ping')) {
+    const botName = 'ilxbot2';
+    const cleanedMessage = session.message.text.replace(botName, '').trim();
+
+    if (cleanedMessage.includes('ping')) {
         session.send('pong!');
     }
-    else if (session.message.text.includes('debug session')) {
+    else if (cleanedMessage.includes('emoji')) {
+        var emoji = require('node-emoji');
+        const emojiResults = emoji.search('pizz');
+        session.send(emojiResults[0].emoji);
+    }
+    else if (cleanedMessage.includes('debug session')) {
         session.send(JSON.stringify(session, null, 2));
     }
-    else if (session.message.text.includes('debug message')) {
+    else if (cleanedMessage.includes('debug message')) {
         session.send(JSON.stringify(session.message, null, 2));
     }
     else {
