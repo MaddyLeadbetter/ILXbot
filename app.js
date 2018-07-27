@@ -43,4 +43,12 @@ bot.dialog('/', function (session) {
     else {
         session.send('I don\'t understand! Say \'ping\'');
     }
+
+    if (session.message.text.includes('debug session')) {
+        session.send(JSON.stringify(session, null, 2));
+    }
+
+    if (session.message.text.includes('debug message')) {
+        session.send(JSON.stringify(session.message, null, 2));
+    }
 });
