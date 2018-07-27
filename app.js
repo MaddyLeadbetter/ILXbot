@@ -42,25 +42,23 @@ bot.set('storage', tableStorage);
 bot.dialog('/', function (session) {
     const botName = 'ilxbot2';
     const cleanedMessage = session.message.text.replace(botName, '').trim();
-    const args = cleanedMessage.split(' ');
+    const args = new Set();
+    args = cleanedMessage.split(' ');
     const returnMsg = '';
     const arrayEmoji=[]
-    var hasEmoji= args.includes('emoji');
+    var hasEmoji= args.has('emoji');
 
     session.on('error', function (err) {
         session.send('Failed with message: %s', err.message);
         session.endDialog();
     });
     
-    if (args.includes('ping')) {
+    if (args.has('ping')) {
         session.send('pong!');
     }
     else if (hasEmoji) {
         var emoji = require('node-emoji');
         let indexEmoji = args.indexOf('emoji')
-        // for (let index = indexEmoji+1; index < args.length; index++){
-        //     elementArray.push(args[index]);
-        // }
         let message = ''
         const elementAfterEmoji = args[parseInt(indexEmoji)+1]
         const emojiElement = emoji.search(elementAfterEmoji)
