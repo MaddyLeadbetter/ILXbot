@@ -59,9 +59,10 @@ bot.dialog('/', function (session) {
         // for (let index = indexEmoji+1; index < args.length; index++){
         //     elementArray.push(args[index]);
         // }
-        const elementAfterEmoji = args[indexEmoji+1]
-        const emojiElement = emoji.search(elementAfterEmoji)
         session.send(indexEmoji);
+
+        const elementAfterEmoji = args[parseInt(indexEmoji)+1]
+        const emojiElement = emoji.search(elementAfterEmoji)
         session.send(emojiElement);
         session.send(emojiElement[0]);
     }
