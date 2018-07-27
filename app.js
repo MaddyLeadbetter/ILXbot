@@ -39,7 +39,7 @@ bot.set('storage', tableStorage);
 bot.dialog('/', function (session) {
     const botName = 'ilxbot2';
     const cleanedMessage = session.message.text.replace(botName, '').trim();
-    const args = cleanedMessage.split(' ')
+    const args = cleanedMessage.split(' ');
 
     if (args[0].includes('ping')) {
         session.send('pong!');
@@ -60,6 +60,7 @@ bot.dialog('/', function (session) {
         session.send(JSON.stringify(session.message, null, 2));
     }
     else {
-        session.send('I don\'t understand! Say \'ping\'');
+        const messageData = JSON.stringify(args);
+        session.send(`I don\'t understand! Message: ${messageData}`);
     }
 });
