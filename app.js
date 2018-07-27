@@ -71,7 +71,8 @@ bot.dialog('/', function (session) {
             session.send(message);
         }
         else if (args[1] === 'get-reminder') {
-            session.send(JSON.stringify(session.userData, null, 2));
+            const userReminder = session.userData.reminder;
+            session.send(userReminder ? userReminder : 'You haven\'t set a reminder for yourself. Do that with \"set-reminder\");
         }
         else if (args[1] === 'set-reminder') {
             let remember = '';
