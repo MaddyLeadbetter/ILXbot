@@ -74,7 +74,7 @@ bot.dialog('/', function (session) {
             session.send(JSON.stringify(session.userData, null, 2));
         }
         else if (args[1] === 'set-reminder') {
-            const remember = '';
+            let remember = '';
             for (var i = 2; i < args.length; ++i) {
                 remember += args[i];
             }
