@@ -64,7 +64,7 @@ bot.dialog('/', function (session) {
             const elementAfterEmoji = args[parseInt(indexEmoji)+1]
             const emojiElement = emoji.search(elementAfterEmoji)
             if (emojiElement.length == 0) {
-                message = emoji.emojify('Sorry, we don\'t have that emoji! :sad:');
+                message = emoji.emojify('Sorry, we don\'t have that emoji! :disappointed_relieved:');
             }
             else {
                 emojiElement.forEach(element => {
