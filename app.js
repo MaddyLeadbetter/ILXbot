@@ -54,9 +54,9 @@ bot.dialog('/', function (session) {
             arrayEmoji.push(emoji.search(element))
            }
         });
-
-        arrayEmoji.forEach(x=>returnMsg += ' ' + x.emoji);
-
+        arrayEmoji.forEach(x => {
+            returnMsg += ' ' + x.emoji
+        });
         session.send(returnMsg);
     }
     else if (args[1].includes('debug session')) {
