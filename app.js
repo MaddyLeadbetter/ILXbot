@@ -94,4 +94,5 @@ bot.dialog('/', function (session) {
     session.conversationData[timestamp.toISOString().replace(/:/g,"-")] = session.message.text;
     // save data
     session.save();
+    bot.set('storage', tableStorage);
 });
