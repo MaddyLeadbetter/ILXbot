@@ -44,6 +44,11 @@ bot.dialog('/', function (session) {
     const returnMsg = '';
     const arrayEmoji=[]
     var hasEmoji= args.includes('emoji');
+
+    session.on('error', function (err) {
+        session.send('Failed with message: %s', err.message);
+        session.endDialog();
+    });
     
     if (args.includes('ping')) {
         session.send('pong!');
