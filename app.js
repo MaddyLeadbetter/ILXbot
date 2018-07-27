@@ -42,18 +42,18 @@ bot.set('storage', tableStorage);
 bot.dialog('/', function (session) {
     const botName = 'ilxbot2';
     const cleanedMessage = session.message.text.replace(botName, '').trim();
-    const args = new Set();
-    args = cleanedMessage.split(' ');
+    const args = cleanedMessage.split(' ');
+    const setStringWords = new Set(args)
     const returnMsg = '';
     const arrayEmoji=[]
-    var hasEmoji= args.has('emoji');
+    var hasEmoji= setStringWords.has('emoji');
 
     session.on('error', function (err) {
         session.send('Failed with message: %s', err.message);
         session.endDialog();
     });
     
-    if (args.has('ping')) {
+    if (setStringWords.has('ping')) {
         session.send('pong!');
     }
     else if (hasEmoji) {
