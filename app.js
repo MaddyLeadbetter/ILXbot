@@ -92,9 +92,9 @@ bot.dialog('/', function (session) {
                         "content": {
                             "title": "Commands:",
                             "items": [
-                                { "subtitle": "emoji [emoji_name]: returns matching emojis"},
-                                { "subtitle": "set-reminder [remind me of...]: sets a reminder for you"},
-                                { "subtitle": "get-reminder: returns your reminder you set"},
+                                { "subtitle": "emoji [emoji_name]:", "text": "returns matching emojis"},
+                                { "subtitle": "set-reminder [remind me of...]:", "text": "sets a reminder for you"},
+                                { "subtitle": "get-reminder:", "text": "returns your reminder you set"},
                             ]
                         }
                     }]
