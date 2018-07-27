@@ -56,6 +56,8 @@ bot.dialog('/', function (session) {
         // }
         const elementAfterEmoji = args[indexEmoji+1]
         const emojiElement = emoji.search(elementAfterEmoji)
+        session.send(indexEmoji);
+        session.send(emojiElement);
         session.send(emojiElement[0]);
     }
     else if (args[1].includes('debug session')) {
