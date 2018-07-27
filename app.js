@@ -40,15 +40,13 @@ bot.dialog('/', function (session) {
     if (session.message.text.includes('ping')) {
         session.send('pong!');
     }
-    else {
-        session.send('I don\'t understand! Say \'ping\'');
-    }
-
-    if (session.message.text.includes('debug session')) {
+    else if (session.message.text.includes('debug session')) {
         session.send(JSON.stringify(session, null, 2));
     }
-
-    if (session.message.text.includes('debug message')) {
+    else if (session.message.text.includes('debug message')) {
         session.send(JSON.stringify(session.message, null, 2));
+    }
+    else {
+        session.send('I don\'t understand! Say \'ping\'');
     }
 });
