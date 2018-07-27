@@ -5,8 +5,6 @@ A simple echo bot for the Microsoft Bot Framework.
 var restify = require('restify');
 var builder = require('botbuilder');
 var botbuilder_azure = require("botbuilder-azure");
-var emoji = require('node-emoji');
-
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -45,15 +43,14 @@ bot.dialog('/', function (session) {
     const args = cleanedMessage.split(' ');
     const returnMsg = '';
     const arrayEmoji=[]
-    var hasEmoji= args.includes('emoji')
-    let indexEmoji;
-    if (hasEmoji){
-        indexEmoji = args.indexOf('emoji')
-    }
-    if (args.indexOf('ping')) {
+    var hasEmoji= args.includes('emoji');
+    
+    if (args.includes('ping')) {
         session.send('pong!');
     }
     else if (hasEmoji) {
+        var emoji = require('node-emoji');
+        let indexEmoji = args.indexOf('emoji')
         const elementArray = []
         // for (let index = indexEmoji+1; index < args.length; index++){
         //     elementArray.push(args[index]);
