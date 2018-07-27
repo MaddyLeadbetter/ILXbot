@@ -39,7 +39,7 @@ bot.set('storage', tableStorage);
 bot.dialog('/', function (session) {
     const botName = 'ilxbot2';
     const cleanedMessage = session.message.text.replace(botName, '').trim();
-    const args = cleanedMessage.split(' ');
+    const args = cleanedMessage.trim().split(' ');
 
     if (args[0].includes('ping')) {
         session.send('pong!');
