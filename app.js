@@ -54,9 +54,6 @@ bot.dialog('/', function (session) {
     });
     
     try {
-        // capture session user information
-        session.userData = {"userId": session.message.user.id, "jobTitle": "H4xx0r"};
-        
         if (setStringWords.has('ping')) {
             session.send('pong!');
         }
@@ -81,6 +78,7 @@ bot.dialog('/', function (session) {
         }
         else if (args[1].includes('set-reminder')) {
             session.userData.reminder = args[2];
+            session.send(`Set your reminder to ${args[2]}`);
         }
         else {
             const messageData = JSON.stringify(args);
@@ -90,6 +88,8 @@ bot.dialog('/', function (session) {
         session.error(err);
     }
 
+    // capture session user information
+    session.userData.userId = session.message.user.id;
     // capture conversation information
     const timestamp = new Date();
     session.conversationData[timestamp.toISOString().replace(/:/g,"-")] = session.message.text;
