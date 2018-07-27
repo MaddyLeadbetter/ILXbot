@@ -54,14 +54,14 @@ bot.dialog('/', function (session) {
         session.send('pong!');
     }
     else if (hasEmoji) {
-        var emoji = require('node-emoji');
-        let indexEmoji = args.indexOf('emoji')
+        // var emoji = require('node-emoji');
+        // let indexEmoji = args.indexOf('emoji')
         // for (let index = indexEmoji+1; index < args.length; index++){
         //     elementArray.push(args[index]);
         // }
-        const elementAfterEmoji = args[indexEmoji+1]
+        // const elementAfterEmoji = args[indexEmoji+1]
         //const emojiElement = emoji.search(elementAfterEmoji)
-        session.send(indexEmoji);
+        session.send(indexEmoji.toString());
         //session.send(emojiElement[0]);
     }
     else if (args[1].includes('debug session')) {
