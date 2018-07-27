@@ -53,33 +53,37 @@ bot.dialog('/', function (session) {
         session.endDialog();
     });
     
-    if (setStringWords.has('ping')) {
-        session.send('pong!');
-    }
-    else if (hasEmoji) {
-        var emoji = require('node-emoji');
-        let indexEmoji = args.indexOf('emoji')
-        let message = ''
-        const elementAfterEmoji = args[parseInt(indexEmoji)+1]
-        const emojiElement = emoji.search(elementAfterEmoji)
-        if (emojiElement.length == 0) {
-            message = "Sorry, we don't have that emoji! " + emoji.emojify(emoji.get('sad'));
+    try {
+        if (setStringWords.has('ping')) {
+            session.send('pong!');
+        }
+        else if (hasEmoji) {
+            var emoji = require('node-emoji');
+            let indexEmoji = args.indexOf('emoji')
+            let message = ''
+            const elementAfterEmoji = args[parseInt(indexEmoji)+1]
+            const emojiElement = emoji.search(elementAfterEmoji)
+            if (emojiElement.length == 0) {
+                message = "Sorry, we don't have that emoji! " + emoji.emojify(emoji.get('sad'));
+            }
+            else {
+                emojiElement.forEach(element => {
+                    message += element.emoji
+                });
+            }
+            session.send(message);
+        }
+        else if (args[1].includes('debug session')) {
+            session.send(JSON.stringify(session, null, 2));
+        }
+        else if (args[1].includes('debug message')) {
+            session.send(JSON.stringify(session.message, null, 2));
         }
         else {
-            emojiElement.forEach(element => {
-                message += element.emoji
-            });
+            const messageData = JSON.stringify(args);
+            session.send(`I don\'t understand! Message: "${cleanedMessage}", Split message: ${messageData}`);
         }
-        session.send(message);
-    }
-    else if (args[1].includes('debug session')) {
-        session.send(JSON.stringify(session, null, 2));
-    }
-    else if (args[1].includes('debug message')) {
-        session.send(JSON.stringify(session.message, null, 2));
-    }
-    else {
-        const messageData = JSON.stringify(args);
-        session.send(`I don\'t understand! Message: "${cleanedMessage}", Split message: ${messageData}`);
+    } catch (err) {
+        session.error(err);
     }
 });
