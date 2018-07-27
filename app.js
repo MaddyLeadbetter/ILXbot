@@ -44,10 +44,10 @@ bot.dialog('/', function (session) {
     const args = cleanedMessage.split(' ');
     const returnMsg = '';
     const arrayEmoji=[]
-    if (args[0].includes('ping')) {
+    if (args[1].includes('ping')) {
         session.send('pong!');
     }
-    else if (args[0].includes('emoji')) {
+    else if (args[1].includes('emoji')) {
         
         args.forEach(element => {
            if (element !== 'emoji'){
