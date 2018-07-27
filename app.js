@@ -42,7 +42,7 @@ bot.set('storage', tableStorage);
 bot.dialog('/', function (session) {
     const botName = 'ilxbot2';
     const cleanedMessage = session.message.text.replace(botName, '').trim();
-    const args = cleanedMessage.split(' ');
+    const args = cleanedMessage.split(' \"');
     const setStringWords = new Set(args)
     const returnMsg = '';
     const arrayEmoji=[]
@@ -54,10 +54,7 @@ bot.dialog('/', function (session) {
     });
     
     try {
-        if (setStringWords.has('ping')) {
-            session.send('pong!');
-        }
-        else if (hasEmoji) {
+        if (hasEmoji) {
             var emoji = require('node-emoji');
             let indexEmoji = args.indexOf('emoji')
             let message = ''
@@ -73,10 +70,13 @@ bot.dialog('/', function (session) {
             }
             session.send(message);
         }
-        else if (args[1].includes('show-data')) {
+        else if (args[1] == 'args-are') {
+            session.send(`Args are: ${args[2]}`);
+        }
+        else if (args[1] === 'show-data') {
             session.send(JSON.stringify(session.userData, null, 2));
         }
-        else if (args[1].includes('set-reminder')) {
+        else if (args[1] === 'set-reminder') {
             session.userData.reminder = args[2];
             session.send(`Set your reminder to ${args[2]}`);
         }
