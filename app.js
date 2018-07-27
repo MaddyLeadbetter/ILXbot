@@ -41,10 +41,11 @@ bot.dialog('/', function (session) {
     const cleanedMessage = session.message.text.replace(botName, '').trim();
     const args = cleanedMessage.trim().split(' ');
 
-    if (args[0].includes('ping')) {
+    // For some reason, array element 0 is an empty string...
+    if (args[1].includes('ping')) {
         session.send('pong!');
     }
-    else if (args[0].includes('emoji')) {
+    else if (args[1].includes('emoji')) {
         var emoji = require('node-emoji');
         const emojiResults = emoji.search(args[1]);
         const returnMsg = '';
@@ -53,10 +54,10 @@ bot.dialog('/', function (session) {
         });
         session.send(returnMsg);
     }
-    else if (args[0].includes('debug session')) {
+    else if (args[1].includes('debug session')) {
         session.send(JSON.stringify(session, null, 2));
     }
-    else if (args[0].includes('debug message')) {
+    else if (args[1].includes('debug message')) {
         session.send(JSON.stringify(session.message, null, 2));
     }
     else {
