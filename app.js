@@ -107,6 +107,7 @@ bot.dialog('/', function (session) {
             session.send(`I don\'t understand! Message: "${cleanedMessage}", Split message: ${messageData}`);
         }
     } catch (err) {
+        // ignore this comment
         session.error(err);
     }
 
